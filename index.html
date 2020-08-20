@@ -62,10 +62,16 @@
 				This Month's Top 10
 			</h2>
 		</div>
-		
-
 		<div class= "audio-intro">
-			<form action="yourPlaylist.html">
+			<div id="Result"></div> 
+		</div>
+		<div>
+			<input type="button" id="button2" value="Display" onclick="display_arrays();"></input>
+			<div id="Demo"></div>
+		</div>
+		
+		<!-- <div class= "audio-intro">
+		 <form action="yourPlaylist.html" method= "GET">
 			<div >
 				<h3 class = "section__tittle section__title--intro">
 			 		1. Lil Baby - <strong>The Bigger Picture</strong> 
@@ -73,9 +79,9 @@
 				<audio class = "section_audio" controls>  
 					<source src="assets/sounds/LilBaby-TheBiggerPicture .mp3" type="audio/mpeg">
 				</audio>
-				<a class="btn">Add to Playlist</a>
+				<a class="btn">Add to Playlist</a>	
 			</div>
-			</form>
+			
 
 			
 			<div>
@@ -86,7 +92,7 @@
 					<source src="assets/sounds/Gunna-DIRTYDIANA.mp3" type="audio/mpeg">
 					</audio>
 					
-				<!-- <button id="button" value="Add" class="btn">Add to Playlist</button> -->
+				<button id="button" value="Add" class="btn">Add to Playlist</button>
 				
 			</div>
 
@@ -94,16 +100,29 @@
 				<h3 id="demo" class="section__tittle section__title--intro"></h3>
 				<input type="button" id="button3" value="Play" onclick="playSound();"></input>
 				<input type="button" id="button 4" value="Pause" onclick="pauseSound();"></input>
-				<input type="button" id="button1" value="Add" onclick="addSongToList();"></input>
+				<input type="button" id="button" value="Add" onclick="add_element_to_arrays();"></input>
+				<input type="button" id="button2" value="Display" onclick="display_arrays();"></input>
+				<div id="Result"></div> 
+			</div>
+			<div>
+				<h3 id="demo2" class="section__tittle section__title--intro"></h3>
+				<input type="button" id="button1" value="Play" onclick="playSound1();"></input>
+				<input type="button" id="button2" value="Pause" onclick="pauseSound1();"></input>
+			</div>
+
+
+			<div>
+				<input type="text" id="text1"></input>
+				<input type="button" id="button1" value="Add" onclick="add_element_to_arrays();"></input>
+				<input type="button" id="button2" value="Display" onclick="display_arrays();"></input>
+				<div id="Result"></div> 
 			</div>
 
 
 
 
 
-
-
-
+				</form > 
 
 
 			<div>
@@ -111,10 +130,16 @@
 					3. Pop Smoke -<strong>The Woo</strong> ft. 50 Cent, Roddy Ricch
 				</h3>
 				<audio class = "section_audio" controls>  
-					<source src="assets/sounds/PopSmoke-TheWooft.50Cent,RoddyRicch.mp3" type="audio/mpeg">
+					<source src= "assets/sounds/PopSmoke-TheWooft.50Cent,RoddyRicch.mp3" type="audio/mpeg">
 				</audio>
 				<a class="btn">Add to Playlist</a>
 			</div>
+
+
+
+
+
+
 			<div>
 				<h3 class = "section__tittle section__title--intro">
 					4. J.I The Prince of NY - <strong>Love In The Club</strong> 
@@ -178,7 +203,7 @@
 				</audio>
 				<a class="btn">Add to Playlist </a>
 			</div>
-		</div>
+		</div> -->
 
 	
 		

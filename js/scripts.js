@@ -48,20 +48,86 @@ navToggle.addEventListener('click', () => {
 
 
     
-    const audios = new Audio('assets/sounds/Gunna-DIRTYDIANA.mp3');
+    
 
 //
 
-
-    const songObj = {
+    let songObj =  {
         artist:'Gunna',
         songName: 'Dirty Diana',
         song: new Audio('assets/sounds/Gunna-DIRTYDIANA.mp3')
     }
+
+    let songs = [
+        {
+            artist:'Lil Baby',
+            songName: 'The Bigger Picture',
+            path: 'assets/sounds/LilBaby-TheBiggerPicture .mp3',
+            song: new Audio('assets/sounds/LilBaby-TheBiggerPicture .mp3')
+        },
+        {
+            artist:'Gunna',
+            songName: 'Dirty Diana',
+            path: 'assets/sounds/Gunna-DIRTYDIANA.mp3',
+            song: new Audio('assets/sounds/Gunna-DIRTYDIANA.mp3')
+        },
+        {
+            artist:'Pop Smoke',
+            songName: 'The Woo',
+            path: 'assets/sounds/PopSmoke-TheWooft.50Cent,RoddyRicch.mp3',
+            song: new Audio('assets/sounds/PopSmoke-TheWooft.50Cent,RoddyRicch.mp3')
+        },
+        {
+            artist:'J.I The Prince of NY',
+            songName: 'Love In The Club',
+            path: 'assets/sounds/J.IThePrinceofNY-LoveInTheClub.mp3',
+            song: new Audio('assets/sounds/J.IThePrinceofNY-LoveInTheClub.mp3')
+        },
+        {
+            artist:'Lil Baby',
+            songName: 'Sum 2 Prove',
+            path: 'assets/sounds/LilBaby-Sum2Prove.mp3',
+            song: new Audio('assets/sounds/LilBaby-Sum2Prove.mp3')
+        },
+        {
+            artist:'Sheff G ft.Sleepy Hallow',
+            songName: 'Weight On Me',
+            path: 'assets/sounds/WeightOnMe-SheffGft.SleepyHallow.mp3',
+            song: new Audio('assets/sounds/WeightOnMe-SheffGft.SleepyHallow.mp3')
+        },
+        {
+            artist:'Polo G',
+            songName: 'Martin & Gina',
+            path: 'assets/sounds/PoloG-Martin&Gina.mp3',
+            song: new Audio('assets/sounds/PoloG-Martin&Gina.mp3')
+        },
+        {
+            artist:'DaBaby ft.Roddy Richh',
+            songName: 'ROCKSTAR',
+            path: 'assets/sounds/DaBabyROCKSTARFTRODDYRICCH.mp3',
+            song: new Audio('assets/sounds/DaBabyROCKSTARFTRODDYRICCH.mp3')
+        },
+        {
+            artist:'Drake',
+            songName: 'ToosieSlide',
+            path: 'assets/sounds/Drake-ToosieSlide.mp3',
+            song: new Audio('assets/sounds/Drake-ToosieSlide.mp3')
+        },
+        {
+            artist:'PARTYNEXTDOOR ft.Drake',
+            songName: 'Loyal',
+            path: 'assets/sounds/PARTYNEXTDOOR-Loyalfeat. Drake.mp3',
+            song: new Audio('assets/sounds/PARTYNEXTDOOR-Loyalfeat. Drake.mp3')
+        },
+    ]
     
-    document.getElementById("demo").innerHTML =
-   "2. " + songObj.artist + " - " + songObj.songName ;
+
+   
     
+    // document.getElementById("demo").innerHTML =
+    // "2. " + songObj.artist + " - " + songObj.songName ;
+    // document.getElementById("demo2").innerHTML = 
+    // "3. " + songs[2].artist + " - " + songs[2].songName;
     
     function playSound(){
         songObj.song.play();
@@ -71,20 +137,116 @@ navToggle.addEventListener('click', () => {
         songObj.song.pause();
     }
    
+    function playSound1(){
+        songs[2].song.play();
+    }
+    function pauseSound1(){
+        songs[2].song.pause();
+    }
+    
 
-    let playlist = [];
-    let x = 0;
+    
 
 
-
-    function addSongToList(){
+//     function addSongToList(){
         
-        playlist[x] = songObj.artist;
+//         playlist[x] = songObj.artist;
 
-        alert("Element: " + playlist[x] + " Added at index " + x);
+//         alert("Element: " + playlist[x] + " Added at index " + x);
          
         
+//     }
+//  function display_array(){
+//         document.getElementById("result").innerHTML = "1. " + playlist;
+//     }
+
+
+
+
+    var x = 0;
+    var playlist = [];    
+
+   function add_element_to_arrays(index)
+    {
+        const query = document.querySelector('#song'+index);
+        const song = query.dataset;
+        alert(index+ ". " + song.artist + " - " + song.songName);
+        playlist.push({...song});
+        alert("hello");
+        console.log('playlist', playlist)
+      
     }
- function display_array(){
-        document.getElementById("result").innerHTML = "1. " + playlist;
-    }
+   
+   
+
+
+    // if (typeof(Storage) !== "undefined") {
+    //     localStorage('store',JSON.stringify(playlist));
+    //     } else {
+    //         document.getElementById("demo").innerHTML = "Sorry, your browser does not support web storage...";
+    // }
+    //     JSON.parse(window.localStorage.getItem('store'));
+
+
+
+
+function display_songs()
+{
+   var e;   
+    console.log('song')
+   for (let i=0; i < songs.length; i++)
+   {
+    let song = songs[i];
+     e =
+    '<div> '+
+        '<h3 class = "section__tittle section__title--intro">' +
+        '<strong>' + song.artist + ' - '+  '</strong>'  +
+        '</h3>' +
+         '<h3 class = "section__tittle section__title--intro">' + 
+            
+            song.songName + 
+        '</h3>' + 
+        '<audio class = "section_audio" controls> ' + 
+            '<source src= "'+ song.path + '" type="audio/mpeg">'+
+        '</audio>'+
+        '<a class="btn" '+
+            'id="song'+i+'" '+
+            'data-song-name="'+song.songName+'" '+
+            'data-artist="'+song.artist+'" '+
+            'data-path="'+song.path+'" '+
+            'onClick="add_element_to_arrays('+i+');">Add to Playlist</a>'+
+    '</div> <br />';
+    console.log('customHtml', e);
+    document.getElementById("Result").innerHTML += e;
+   }
+   
+}
+
+
+display_songs();
+
+function display_arrays()
+{
+ 
+   var e = "<hr/>";   
+    
+   for (var i = 0; i < playlist.length; i++)
+   {
+     e +=  
+     '<div> '+
+        '<h3 class = "section__tittle section__title--intro">' +
+        '<strong>' + playlist[i].artist + ' - '+  '</strong>'  +
+        '</h3>' +
+         '<h3 class = "section__tittle section__title--intro">' + 
+            
+            playlist[i].songName + 
+        '</h3>' + 
+        '<audio class = "section_audio" controls> ' + 
+            '<source src= "'+ playlist[i].path + '" type="audio/mpeg">'+
+        '</audio>'
+        '</div>' 
+        "<br/>"
+   }
+   document.getElementById("Demo").innerHTML = e;
+   
+}
