@@ -172,12 +172,41 @@ navToggle.addEventListener('click', () => {
         const song = query.dataset;
         alert(index+ ". " + song.artist + " - " + song.songName);
         playlist.push({...song});
-        alert("hello");
-        console.log('playlist', playlist)
-      
+        console.log('playlist', playlist);
+        
+        localStorage.setItem("List", JSON.stringify(playlist));
+        
     }
    
-   
+ 
+function localOut(){
+    
+    var name = JSON.parse(localStorage.getItem("List"));
+    var e = "<hr/>";   
+    
+   for (var i = 0; i < name.length; i++)
+   {
+    
+     e +=  
+     '<div> '+
+        '<h3 class = "section__tittle section__title--intro">' +
+        '<strong>' + name[i].artist + ' - '+  '</strong>'  +
+        '</h3>' +
+         '<h3 class = "section__tittle section__title--intro">' + 
+            
+            name[i].songName + 
+        '</h3>' + 
+        '<audio class = "section_audio" controls> ' + 
+            '<source src= "'+ name[i].path + '" type="audio/mpeg">'+
+        '</audio>'
+        '</div>' 
+        "<br/>"
+   }
+  console.log(name);
+  document.getElementById('Demo3').innerHTML = e; 
+}
+
+
 
 
     // if (typeof(Storage) !== "undefined") {
@@ -186,8 +215,6 @@ navToggle.addEventListener('click', () => {
     //         document.getElementById("demo").innerHTML = "Sorry, your browser does not support web storage...";
     // }
     //     JSON.parse(window.localStorage.getItem('store'));
-
-
 
 
 function display_songs()
@@ -209,12 +236,13 @@ function display_songs()
         '<audio class = "section_audio" controls> ' + 
             '<source src= "'+ song.path + '" type="audio/mpeg">'+
         '</audio>'+
-        '<a class="btn" '+
+        '<input class="btn" '+
             'id="song'+i+'" '+
+            'value="Add to Playlist" '+
             'data-song-name="'+song.songName+'" '+
             'data-artist="'+song.artist+'" '+
             'data-path="'+song.path+'" '+
-            'onClick="add_element_to_arrays('+i+');">Add to Playlist</a>'+
+            'onClick="add_element_to_arrays('+i+');"></input>'+
     '</div> <br />';
     console.log('customHtml', e);
     document.getElementById("Result").innerHTML += e;
