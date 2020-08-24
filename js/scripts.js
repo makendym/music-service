@@ -179,32 +179,6 @@ navToggle.addEventListener('click', () => {
     }
    
  
-function localOut(){
-    
-    var name = JSON.parse(localStorage.getItem("List"));
-    var e = "<hr/>";   
-    
-   for (var i = 0; i < name.length; i++)
-   {
-    
-     e +=  
-     '<div> '+
-        '<h3 class = "section__tittle section__title--intro">' +
-        '<strong>' + name[i].artist + ' - '+  '</strong>'  +
-        '</h3>' +
-         '<h3 class = "section__tittle section__title--intro">' + 
-            
-            name[i].songName + 
-        '</h3>' + 
-        '<audio class = "section_audio" controls> ' + 
-            '<source src= "'+ name[i].path + '" type="audio/mpeg">'+
-        '</audio>'
-        '</div>' 
-        "<br/>"
-   }
-  console.log(name);
-  document.getElementById('Demo3').innerHTML = e; 
-}
 
 
 
@@ -226,17 +200,18 @@ function display_songs()
     let song = songs[i];
      e =
     '<div> '+
-        '<h3 class = "section__tittle section__title--intro">' +
-        '<strong>' + song.artist + ' - '+  '</strong>'  +
+        '<h3 class = "section__tittle section__title--intro1">' +
+        '<strong>' + (i+1) + ". " + song.artist + ' - '+  '</strong>'  +
         '</h3>' +
-         '<h3 class = "section__tittle section__title--intro">' + 
+         '<h3 class = "section__tittle section__title--intro2">' + 
             
             song.songName + 
         '</h3>' + 
-        '<audio class = "section_audio" controls> ' + 
+        '<audio class = "section_audio" controls onplay="pauseOthers(this);"> ' + 
             '<source src= "'+ song.path + '" type="audio/mpeg">'+
         '</audio>'+
         '<input class="btn" '+
+            'type="button"' +
             'id="song'+i+'" '+
             'value="Add to Playlist" '+
             'data-song-name="'+song.songName+'" '+
@@ -245,36 +220,77 @@ function display_songs()
             'onClick="add_element_to_arrays('+i+');"></input>'+
     '</div> <br />';
     console.log('customHtml', e);
-    document.getElementById("Result").innerHTML += e;
+    // document.getElementById("Result").innerHTML += e;
+    if(document.getElementById("Result") != null){
+        var idPost=document.getElementById("Result").innerHTML += e;
+    }
    }
    
 }
 
-
 display_songs();
 
-function display_arrays()
-{
- 
-   var e = "<hr/>";   
+function localOut(){
     
-   for (var i = 0; i < playlist.length; i++)
+    var name = JSON.parse(localStorage.getItem("List"));
+    var es = "<hr/>";   
+    
+   for (var i = 0; i < name.length; i++)
    {
-     e +=  
+    
+     es =  
      '<div> '+
         '<h3 class = "section__tittle section__title--intro">' +
-        '<strong>' + playlist[i].artist + ' - '+  '</strong>'  +
+        '<strong>' + name[i].artist + ' - '+  '</strong>'  +
         '</h3>' +
          '<h3 class = "section__tittle section__title--intro">' + 
             
-            playlist[i].songName + 
+            name[i].songName + 
         '</h3>' + 
         '<audio class = "section_audio" controls> ' + 
-            '<source src= "'+ playlist[i].path + '" type="audio/mpeg">'+
+            '<source src= "'+ name[i].path + '" type="audio/mpeg">'+
         '</audio>'
         '</div>' 
-        "<br/>"
+        "<br/>";
+
+    console.log('customHTML',name);
+    // document.getElementById('Demo3').innerHTML += es; 
+    if(document.getElementById("Demo3") != null){
+        var idPost=document.getElementById("Demo3").innerHTML += es;
+    }
    }
-   document.getElementById("Demo").innerHTML = e;
+}
+
+localOut();
+// function display_arrays()
+// {
+ 
+//    var e = "<hr/>";   
+    
+//    for (var i = 0; i < playlist.length; i++)
+//    {
+//      e +=  
+//      '<div> '+
+//         '<h3 class = "section__tittle section__title--intro">' +
+//         '<strong>' + playlist[i].artist + ' - '+  '</strong>'  +
+//         '</h3>' +
+//          '<h3 class = "section__tittle section__title--intro">' + 
+            
+//             playlist[i].songName + 
+//         '</h3>' + 
+//         '<audio class = "section_audio" controls> ' + 
+//             '<source src= "'+ playlist[i].path + '" type="audio/mpeg">'+
+//         '</audio>'
+//         '</div>' 
+//         "<br/>"
+//    }
+//    document.getElementById("Demo").innerHTML = e;
    
+// }
+
+
+function pauseOthers(ele) {
+    document.querySelectorAll(selector).not(ele).each(function (index, audio) {
+        audio.pause();
+    });
 }

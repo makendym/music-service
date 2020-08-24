@@ -76,7 +76,7 @@ strong { font-weight: var(--fw-bold);}
     letter-spacing: 2px;
     font-weight: var(--fw-bold);
     transition: transform 200ms ease-in-out;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
 
 }
 .btn:hover{
@@ -99,11 +99,11 @@ h3{font-size: var(--fs--h3);}
     margin-bottom: .25em;
 }
 
-.section__title--intro {
+.section__title--intro2 {
     font-weight: var(--fw-reg);
 }
 
-.section__title--intro strong {
+.section__title--intro2 strong {
     display: block;
 }
 
@@ -264,120 +264,6 @@ header {
     }
 }
 
-/* My service section */
-
-.my-services{
-    background-color: var(--clr-dark);
-    background-image: url(../assets/images/john.jpg);
-    background-size: cover;
-    background-blend-mode: multiply;
-    color: var(--clr-light);
-}
-
-.section__title--services {
-    color: var(--clr-accent);
-    position: relative;
-}
-.section__title--services::after{
-    content: "";
-    display: block;
-    width: 2em;
-    height: 1px;
-    margin: 0.5em auto 1em;
-    background: var(--clr-light);
-    opacity: 0.25;
-}
-.services{
-    margin-bottom: 4em;
-}
-.service{
-    max-width: 500px;
-    margin: 0 auto;
-
-}
-@media (min-width: 800px){
-    .services {
-        display: flex;
-        max-width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .service + .service{
-        margin-left: 2em;
-    }
-}
-
-
-
-
-.about-me {
-    max-width: 1000px;
-    margin: 0 auto;
-}
-@media (min-width: 600px){
-    .about-me {
-        display: grid;
-        grid-template-columns: 1fr 200px;
-        grid-template-areas: 
-            "title img"
-            "subtitle img"
-            "text img";
-            grid-column-gap: 2em;
-    }
-    .section__title--about {
-        grid-area: title;
-    }
-    .section__subtitle--about{
-        grid-column: 1/ -1;
-        grid-row: 2;
-        position: relative;
-        left: -1em;
-        width: calc(100%+2em);
-        padding-left: 1em;
-        padding-right: calc(200px + 4em);
-    }
-    .about-me__img{
-        grid-area: img;
-        position: relative;
-        z-index: 2;
-    }
-    
-}
-
-
-/* My work */
-
-.my-work {
-    background-color: var(--clr-dark);
-    color: var(--clr-light);
-    text-align: center;
-}
-.portfolio {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    
-}
-
-.portfolio__item {
-    background: var(--clr-accent);
-    overflow: hidden;
-}
-.portfolio__img {
-    transition:
-        transform 750ms cubic-bezier(.5, 0, .5, 1),
-        opacity 250ms linear;
-
-}
-.portfolio__item:focus{
-    position: relative; 
-    z-index: 2;
-}
-.portfolio__img:hover,
-.portfolio__item:focus .portfolio__img{
-    transform: scale(1,2);
-    opacity: .75;
-}
-
 /* footer */
 .footer{
     background: #111;
@@ -417,29 +303,25 @@ header {
     padding: .5em;
 }
 
-/* Individual portfolio item styles */
-.portfolio-item-individual {
-    padding: 0 2em 2em;
-    max-width: 1000px;
-    margin: auto;
-}
-.portfolio-item-individual p {
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 /* Audio */
 .section_audio{
     margin: 0em;
-    padding-top: 1em;
+    margin-bottom: 1em;
+    padding-bottom: .5em;
+    padding-top: .5em;
+} 
+.section_audio:hover{
+    opacity: 2;
 }
-
 
 .title_intro{
-    padding-bottom: 2em;
+    padding-bottom: 1em;
+    
 }
-
+.section__title--intro2 {
+    margin-bottom: 1em;
+}
 
 .audio{
     background-color: var(--clr-dark);
